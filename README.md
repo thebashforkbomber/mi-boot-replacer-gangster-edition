@@ -213,7 +213,7 @@ During the **first installation**, you'll be prompted to backup your current boo
 
 **First Install:**
 - When installing the module for the first time, if no backup exists, you'll be prompted to backup your current boot animation
-- Backups are stored in `/data/adb/boot-backups/` and include all `bootanimation*.zip` files from your selected location
+- Backups are stored in `/data/adb/boot-backups/` and include all `bootanimation*.zip` files from your selected directory
 
 **Module Updates:**
 - When updating the module, the backup process will be automatically skipped if a backup already exists
@@ -243,7 +243,7 @@ You can use GitHub Actions to build a custom boot animation module without any l
 4. Set **Source** to `template`
 5. Select your **Device model** (e.g., `liuqin`)
 6. Select the **Template** (e.g., `HyperOS`)
-7. Select the **Target location**
+7. Select the **Target directory**
 8. Download the built module from **Artifacts**
 
 > [!NOTE]
@@ -257,7 +257,7 @@ You can use GitHub Actions to build a custom boot animation module without any l
 4. Go to **Actions** → **"Build Custom Boot Animation Module"**
 5. Click **"Run workflow"**
 6. Select `upload` as the source
-7. Select the **Target location**
+7. Select the **Target directory**
 8. Download the built module from **Artifacts**
 
 > [!TIP]
@@ -266,16 +266,16 @@ You can use GitHub Actions to build a custom boot animation module without any l
 > [!WARNING]
 > The `upload/` folder is for personal use in your fork only. Do not submit pull requests with changes to this folder - they will be automatically closed.
 
-### Available Target Locations
+### Available Target Directories
 
-| Location | Description |
+| Directories | Description |
 |----------|-------------|
-| `/product/media` | Default location (most devices) |
-| `/system/media` | Legacy location |
+| `/product/media` | Default directory |
+| `/system/media` | Legacy directory |
 | `/system_ext/media` | System extension media |
 
 > [!TIP]
-> If you don't see any change in the boot animation after installation, you may have selected the wrong path. Try reflashing the module and select a different location.
+> If you don't see any change in the boot animation after installation, you may have selected the wrong path. Try reflashing the module and select a different directory.
 
 ### File Naming Convention
 

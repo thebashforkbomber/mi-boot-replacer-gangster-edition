@@ -272,7 +272,7 @@
 
 | 位置 | 描述 |
 |------|------|
-| `/product/media` | 默认位置（大多数设备） |
+| `/product/media` | 默认位置 |
 | `/system/media` | 传统位置 |
 | `/system_ext/media` | 系统扩展媒体 |
 

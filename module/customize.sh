@@ -1,6 +1,6 @@
 SKIPUNZIP=0
 
-# Default boot animation location
+# Default boot animation
 BOOT_DIR="/product/media"
 BOOT_DIR_FROM_MODULE=false
 BACKUP_DIR="/data/adb/boot-backups"
@@ -48,7 +48,7 @@ key_check() {
   done
 }
 
-# Auto-detect boot animation location from module structure
+# Auto-detect boot animation directory from module structure
 detect_boot_dir() {
   local module_boot_dir=""
 
@@ -80,19 +80,19 @@ detect_boot_dir() {
   fi
 }
 
-# Let user select boot animation location
+# Let user select boot animation directory
 select_boot_dir() {
-  ui_print "- Select boot animation location:"
+  ui_print "- Select boot animation directory:"
   ui_print "- Press the following keys to proceed:"
   ui_print "  Volume [+]: Next option"
   ui_print "  Volume [-]: Confirm selection"
   ui_print "*********************************************"
 
-  # Available locations
+  # Available directories
   local current_index=0
   local total=3
 
-  # Find if detected location matches any option
+  # Find if detected directory matches any option
   case "$BOOT_DIR" in
     "/product/media") current_index=0 ;;
     "/system/media") current_index=1 ;;
@@ -260,19 +260,19 @@ if [ -d "$OLD_MODULE_DIR/system" ]; then
   fi
 fi
 
-# Auto-detect location
+# Auto-detect directory
 detect_boot_dir
 
 if [ "$BOOT_DIR_FROM_MODULE" = true ]; then
   ui_print "- Boot animation path (from module): $BOOT_DIR"
-  ui_print "- Change location? (Not recommended)"
-  ui_print "  Volume [+]: Change location"
-  ui_print "  Volume [-]: Use module path (Recommended)"
+  ui_print "- Change directory? (Not recommended)"
+  ui_print "  Volume [+]: Change directory"
+  ui_print "  Volume [-]: Use module path (Default)"
 else
-  ui_print "- Detected boot animation location: $BOOT_DIR"
+  ui_print "- Detected boot animation directory: $BOOT_DIR"
   ui_print "- (May not match module's configured path, please verify before proceeding)"
-  ui_print "- Do you want to change the location?"
-  ui_print "  Volume [+]: Change location"
+  ui_print "- Do you want to change the directory?"
+  ui_print "  Volume [+]: Change directory"
   ui_print "  Volume [-]: Use detected path"
 fi
 ui_print "*********************************************"
@@ -322,7 +322,7 @@ ui_print "- Reboot to see new animations"
 ui_print ""
 ui_print "! If you don't see any changes after reboot:"
 ui_print "  You may have selected the wrong path"
-ui_print "  Try reinstalling and select a different location"
+ui_print "  Try reinstalling and select a different directory"
 ui_print "*********************************************"
 
 # End
