@@ -200,7 +200,7 @@ fi
 
 # Check if device is Xiaomi
 DEVICE_BRAND=$(getprop ro.product.brand | tr '[:upper:]' '[:lower:]')
-if [[ "$DEVICE_BRAND" != "xiaomi" && "$DEVICE_BRAND" != "redmi" && "$DEVICE_BRAND" != "poco" ]]; then
+if [[ ! "$DEVICE_BRAND" =~ ^(xiaomi|redmi|poco)$ ]]; then
   ui_print "! Warning: Non-Xiaomi device detected"
   ui_print "- This module is designed for Xiaomi/Redmi/POCO devices"
   ui_print "- Theoretically it should still work, but keep in mind that unexpected behaviour may occur"
@@ -218,7 +218,7 @@ if [[ "$DEVICE_BRAND" != "xiaomi" && "$DEVICE_BRAND" != "redmi" && "$DEVICE_BRAN
   fi
 fi
 
-# Check for downgrade as old versions have a different backup structure which may or may not cause issues?
+# Check for downgrade as new versions have a different backup structure which may or may not cause issues?
 if [ -f "$OLD_MODULE_DIR/module.prop" ]; then
   OLD_MODULE_VER_CODE=$(($(grep_prop versionCode "$OLD_MODULE_DIR/module.prop") + 0))
   ui_print "- Installed version: $OLD_MODULE_VER_CODE"
